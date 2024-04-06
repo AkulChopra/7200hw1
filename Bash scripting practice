@@ -1,0 +1,104 @@
+1) Write a shell loop that adds up all the numbers from 1-100
+___
+#!/bin/sh
+
+sum=0
+echo 'sum=' $sum
+for x in $(seq 1 100)
+do
+  sum = 'expr $sum + $x'
+  echo 'sum = ' $sum
+done
+___
+
+2) Write a shell loop that prints each letter in the word "Hello" seperately
+___
+#!/bin/sh
+
+for i in H e l l o
+do
+  echo $i
+done
+___
+
+3) Have variable 'x' increase from 0 to 100 and variable 'y' decrease from 100 to 0 by 1 unit at a time and print "x and y are equal" when the variables equal. Also, print the difference b/w 'x' and 'y'.
+___
+#!/bin/sh
+
+# Define the variables
+x=0
+y=100
+
+# Create a for loop that will go from 0 to 100
+for i in $(seq 1 100)
+do
+  # Print the values of x and y
+  echo "x = " $x " and y = " $y
+
+  # Print the difference b/w x and y
+  diff='expr $x - $y'
+  echo "difference = " $diff
+
+  # If the value of x is equal to the value of y, print that they are equal
+  if [$x -eq $y]
+  then  
+    echo "x and y are equal"
+  fi
+
+  # Increase/Drecrease the value of x/y by 1
+  x='expr $x + 1'
+  y='expr $y - 1'
+done
+___
+
+4) Write a getops block with 3 options, including one that requires an argument
+___
+#!/bin/sh
+
+while getops 'a:bc' script
+do
+  case $script in
+    a) a_var=$OPTARG; echo "you inputted: " $OPTARG;;
+    b) echo "this is option b";;
+    c) echo "this is option c";;
+  esac
+done
+___
+
+5) Write a script utilizing 'case' that asks the user the day of the week and prints the day number based on user input (e.g. Monday=1, Tuesday=2,..., Sunday=7)
+___
+#!/bin/sh
+
+echo "Please enter a day (type 'Exit' to exit):"
+while :
+do
+  read INPUT_STRING
+  case $INPUT_STRING in
+    Monday) echo "Monday is the day num. 1";;
+    Tuesday) echo "Tuesday is the day num. 2";;
+    Wednesday) echo "Wednesday is the day num. 3";;
+    Thursday) echo "Thursday is the day num. 4";;
+    Friday) echo "Friday is the day num. 5";;
+    Saturday) echo "Saturday is the day num. 6";;
+    Sunday) echo "Sunday is the day num. 7";;
+    Exit) exit;;
+    # An extra input case for when the required $INPUT_STRING does not match any of the above options
+    *) echo "Sorry, I do not understand" $INPUT_STRING;;
+  esac
+done
+___
+
+6) Write a nested for loop to create 10 files by the name "seq1.fasta", "seq2.fasta",..., "seq10.fasta" with 8 sequences each. These DNA sequences will be a random DNA string of 50x10 letters.
+___
+#!/bin/sh
+
+for i in $(seq 1 10)
+do
+  for j in $(seq 1 8)
+  do
+    echo ">seq"$i"_"$j" >> "seq${i}.fasta"
+    # For the below line: 'cat /dev/urandom/' creates a random string, 'tr -dc "ACGT"' deletes everything but the words 'ACGT', 'fold -w 50' formats this for every 50 characters
+    cat /dev/urandom | tr -dc 'ACGT' | fold -w 50 | head >> "seq${i}.fasta"
+  done
+done
+___
