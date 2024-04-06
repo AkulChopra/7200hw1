@@ -1,0 +1,44 @@
+### Bash practice
+
+General Commands
+________
+ls: list files (e.g. ls -a)
+man: manual entry for a command (e.g. man ls)
+vi, vim: unix built-in text editor
+cp: copy a file or directory (e.g. cp ./folder1/original_file ./folder2/copied_file)
+rm: remove a file (e.g. rm ./my_file)
+cat, >, >>, |: concatenate, redirect, append, and pipe
+head, tail, more, less, most: explore the contents of a file
+  head: look at the first 5 lines of a file
+  tail: look at the last 5 lines of a file
+  more, less, most: different ways of browsing a file's contents
+mkdir: makes a directory (e.g. mkdir ./new_folder)
+rmdir: removes a directory (e.g. rmdir ./old_folder)
+echo: prints the contents or lines
+export: sets up an environmental variable
+wc: counts the number of lines/words/bytes in a file
+
+who, finger: looks up info about users
+top: see the status of currently running system processes
+free: see the amount of free and used memory
+wget, curl: downloads files from an ftp
+du/df: see the amount of used/free storage space
+ps: see all the processes currently running
+fg: move a job into the foreground (you can move jobs into the background with Ctrl + Z)
+which: find the location of a binary in PATH (e.g. which -a awk)
+ln: creates links (e.g. ln ./target_folder ./link_folder)
+
+cut: extract some columns/characters/bytes from a file
+paste: paste together files side-by-side
+grep: find patterns in a file(s)
+sed: find and replace patterns in a file(s)
+apt-get: handle system packages
+make: build executable packages
+sudo: execute a command w/ elevated privileges
+
+xargs: command building utility (e.g. ls | xargs -I ONE ls ./ONE)
+awk: a simple programming language for line-by-line operations
+
+sort: sort data (e.g. sort ./my_file)
+uniq: find unique lines in an input
+tee: create a tee junction
